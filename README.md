@@ -30,6 +30,47 @@ Advance Programming for Data Science bridges theoretical data science methodolog
 
 ---
 
+## Python Environment and Runtime Specifications
+
+All code in this repository is developed and validated against modern Python environments.
+
+- Recommended Python Version: Python 3.10 or higher
+- System Environment: Python 3.14.7 (64-bit)
+- Virtual Environment Standard: Standard library `venv` module
+
+### Environment Setup Instructions
+
+To maintain reproducible environments and prevent global package pollution:
+
+1. Create a local virtual environment:
+   ```bash
+   python -m venv .venv
+   ```
+
+2. Activate the virtual environment:
+   - On Windows (PowerShell):
+     ```powershell
+     .venv\Scripts\Activate.ps1
+     ```
+   - On Windows (Command Prompt):
+     ```cmd
+     .venv\Scripts\activate.bat
+     ```
+   - On Linux / macOS (Bash / Zsh):
+     ```bash
+     source .venv/bin/activate
+     ```
+
+3. Upgrade pip and install standard development tools:
+   ```bash
+   python -m pip install --upgrade pip
+   pip install pytest mypy ruff
+   ```
+
+Virtual environment directories (`.venv/`, `env/`, `venv/`) and cache artifacts (`__pycache__/`) are globally ignored by the repository [.gitignore](file:///D:/Documents/ITC/Year_05_Semester_01/APDS/Github/.gitignore).
+
+---
+
 ## Reference Materials and Textbooks
 
 - Textbook: *The Art of Readable Code* by Dustin Boswell and Trevor Foucher (O'Reilly Media)
@@ -42,26 +83,109 @@ Advance Programming for Data Science bridges theoretical data science methodolog
 
 ---
 
-## Repository Architecture and Branch Strategy
+## Repository Architecture and Branch Usages
 
-To maintain a clean separation between instructional materials, development work, and assignment submissions, this repository follows a dedicated multi-branch structure:
+To maintain strict separation of concerns, the repository is partitioned into five dedicated branches:
 
 ```
 year-05-itc-apds/
 |-- main                  Production-ready documentation, course index, and milestones
 |-- lectures              Lecture notes, theoretical summaries, slide code samples
-|-- assignments           Coursework assignments, homework, and problem set submissions
 |-- tp                    Travaux Pratiques (TP), practical lab exercises, and sessions
+|-- assignments           Coursework assignments, homework, and problem set submissions
 `-- projects              Course project milestones, prototypes, and final codebase
 ```
 
-### Branch Descriptions
+### 1. `main` Branch (Canonical Source of Truth)
 
-- `main`: The root branch containing the primary course documentation, syllabus index, and merged milestones. Direct pushes to `main` are restricted to administrative and consolidated updates.
-- `lectures`: Contains slide notes, code demonstrations, reading notes, and reference implementations covered during weekly lecture sessions.
-- `assignments`: Designated branch for take-home coursework assignments, problem sets, and formal submissions.
-- `tp`: Dedicated branch for hands-on laboratory practicals (Travaux Pratiques / TP) and coding session exercises.
-- `projects`: Tracks course project milestones, mid-term prototypes, team modules, and the final course deliverable.
+- Purpose: The root branch serving as the central hub for verified course documentation, syllabus tracking, configuration files, and merged milestone releases.
+- Usage Rules: Direct pushes to `main` are restricted to administrative documentation. All major deliverables must arrive via reviewed pull requests.
+- Typical Commands:
+  ```bash
+  # Check out and sync latest main
+  git switch main
+  git pull origin main
+  ```
+
+### 2. `lectures` Branch (Instructional Notes and Demos)
+
+- Purpose: Tracks lecture slide summaries, reading notes from *The Art of Readable Code*, and live code demonstrations created during weekly lectures.
+- Usage Rules: Kept up-to-date chronologically by chapter. Demonstrations should be runnable standalone Python scripts.
+- Typical Commands:
+  ```bash
+  # Switch to lectures branch and pull updates
+  git switch lectures
+  git pull origin lectures
+  ```
+
+### 3. `tp` Branch (Travaux Pratiques / Practical Labs)
+
+- Purpose: Dedicated to in-class laboratory practical exercises (TP) conducted at ITC AMS lab facilities.
+- Usage Rules:
+  - Each lab session is developed on a dedicated session branch branched off `tp` (e.g. `tp-01-git-practice`).
+  - Completed lab exercises are verified and merged into `tp`.
+- Typical Commands:
+  ```bash
+  # Switch to tp branch
+  git switch tp
+  git pull origin tp
+
+  # Create a feature branch for a practical session
+  git switch -c tp-01-practice
+
+  # Complete exercises inside tp/practice-01/, commit, and push
+  git add .
+  git commit -m "feat(tp01): implement git branching practice tasks"
+  git push -u origin tp-01-practice
+
+  # Open a Pull Request targeting 'tp' on GitHub
+  ```
+
+### 4. `assignments` Branch (Graded Coursework and Homework)
+
+- Purpose: Manages formal coursework assignments, take-home problem sets, and graded deliverables requested by the lecturer.
+- Usage Rules:
+  - Solutions are built in dedicated folders per assignment (e.g., `assignments/assignment-01/`).
+  - Work must adhere strictly to readability and formatting standards.
+- Typical Commands:
+  ```bash
+  # Switch to assignments branch
+  git switch assignments
+  git pull origin assignments
+
+  # Create an assignment working branch
+  git switch -c assignment-01-clean-code
+
+  # Stage, commit, and push
+  git add .
+  git commit -m "feat(assignment01): complete readability refactoring"
+  git push -u origin assignment-01-clean-code
+
+  # Open a Pull Request targeting 'assignments' on GitHub
+  ```
+
+### 5. `projects` Branch (Term and Capstone Projects)
+
+- Purpose: Houses the collaborative term project, midterm mini-project, and end-of-semester software engineering deliverables.
+- Usage Rules:
+  - Feature-driven development following team collaboration guidelines from Lecture 01.
+  - Includes unit tests, documentation, and data engineering pipelines.
+- Typical Commands:
+  ```bash
+  # Switch to projects branch
+  git switch projects
+  git pull origin projects
+
+  # Create a project feature branch
+  git switch -c feature/data-pipeline
+
+  # Commit modular additions
+  git add .
+  git commit -m "feat(pipeline): implement clean ETL processing module"
+  git push -u origin feature/data-pipeline
+
+  # Open a Pull Request targeting 'projects' on GitHub
+  ```
 
 ---
 
@@ -93,37 +217,6 @@ year-05-itc-apds/
 - Unit testing with `pytest`
 - Profiling memory and computational efficiency
 - Reproducible environments using virtual environments and lockfiles
-
----
-
-## Standard Workflow Guidelines
-
-As presented in Lecture 01, all development work follows standard team collaboration protocols:
-
-1. Clone repository:
-   ```bash
-   git clone https://github.com/menghong-heng/year-05-itc-apds.git
-   cd year-05-itc-apds
-   ```
-
-2. Switch to the target branch or create a feature branch:
-   ```bash
-   git switch assignments
-   git switch -c tp-01-practice
-   ```
-
-3. Stage and commit changes with descriptive commit messages:
-   ```bash
-   git add .
-   git commit -m "Complete Practice 01 Git workflow tasks"
-   ```
-
-4. Push feature branch to the remote repository:
-   ```bash
-   git push -u origin tp-01-practice
-   ```
-
-5. Open a Pull Request on GitHub against `assignments` or `main` for review.
 
 ---
 
