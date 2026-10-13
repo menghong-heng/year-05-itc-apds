@@ -8,7 +8,7 @@ This branch (`tp`) contains laboratory practical exercises, coding tasks, and ha
 
 | Session | Title | Directory | Status |
 | :--- | :--- | :--- | :--- |
-| TP 01 | Introduction to Git and Version Control | `tp/practice-01/` | Initialized |
+| TP 01 | Lecture Summary: Clean Code, PEP 8, and Debugging | `tp/practice-01/` | Completed |
 | TP 02 | Code Readability and Refactoring | `tp/practice-02/` | Pending |
 | TP 03 | Modular Python Architecture | `tp/practice-03/` | Pending |
 | TP 04 | Testing and Performance Profiling | `tp/practice-04/` | Pending |

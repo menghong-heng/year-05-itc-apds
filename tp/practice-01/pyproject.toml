@@ -1,0 +1,47 @@
+[project]
+name = "apds-tp01"
+version = "0.1.0"
+description = "APDS TP 01: Clean Code, PEP 8, Modular Architecture, and Ruff Configuration"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.ruff]
+# Target Python version
+target-version = "py310"
+
+# Set line length limit to 88 characters (PEP 8 compatible standard)
+line-length = 88
+
+# Directory exclusions
+exclude = [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint]
+# Enable rules:
+# E/W: pycodestyle errors and warnings
+# F: Pyflakes (syntax/logical errors, unused imports/variables)
+# I: isort (import sorting)
+# B: flake8-bugbear (common bug design patterns)
+# UP: pyupgrade (modern Python syntax upgrades)
+# SIM: flake8-simplify (code simplification)
+# D: pydocstyle (docstring conventions)
+select = ["E", "W", "F", "I", "B", "UP", "SIM"]
+
+# Allow non-fatal docstring missing on internal test files
+ignore = ["E501"]  # line length handled by formatter
+
+[tool.ruff.lint.isort]
+# Combine and group standard library, 3rd party, and local imports
+known-first-party = ["data_processor"]
+
+[tool.ruff.format]
+# Enable standard double quotes and indent style
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
