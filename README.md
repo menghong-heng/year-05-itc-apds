@@ -85,15 +85,14 @@ Virtual environment directories (`.venv/`, `env/`, `venv/`) and cache artifacts 
 
 ## Repository Architecture and Branch Usages
 
-To maintain strict separation of concerns, the repository is partitioned into five dedicated branches:
+To maintain strict separation of concerns, the repository is partitioned into four dedicated branches:
 
 ```
 year-05-itc-apds/
 |-- main                  Production-ready documentation, course index, and milestones
 |-- lectures              Lecture notes, theoretical summaries, slide code samples
 |-- tp                    Travaux Pratiques (TP), practical lab exercises, and sessions
-|-- assignments           Coursework assignments, homework, and problem set submissions
-`-- projects              Course project milestones, prototypes, and final codebase
+`-- assignments           Coursework assignments, homework, and problem set submissions
 ```
 
 ### 1. `main` Branch (Canonical Source of Truth)
@@ -164,28 +163,7 @@ year-05-itc-apds/
   # Open a Pull Request targeting 'assignments' on GitHub
   ```
 
-### 5. `projects` Branch (Term and Capstone Projects)
 
-- Purpose: Houses the collaborative term project, midterm mini-project, and end-of-semester software engineering deliverables.
-- Usage Rules:
-  - Feature-driven development following team collaboration guidelines from Lecture 01.
-  - Includes unit tests, documentation, and data engineering pipelines.
-- Typical Commands:
-  ```bash
-  # Switch to projects branch
-  git switch projects
-  git pull origin projects
-
-  # Create a project feature branch
-  git switch -c feature/data-pipeline
-
-  # Commit modular additions
-  git add .
-  git commit -m "feat(pipeline): implement clean ETL processing module"
-  git push -u origin feature/data-pipeline
-
-  # Open a Pull Request targeting 'projects' on GitHub
-  ```
 
 ---
 
