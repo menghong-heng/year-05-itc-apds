@@ -50,15 +50,18 @@ To maintain a clean separation between instructional materials, development work
 year-05-itc-apds/
 |-- main                  Production-ready documentation, course index, and milestones
 |-- lectures              Lecture notes, theoretical summaries, slide code samples
-`-- assignments           Practical work (TP), assignment deliverables, exercises
+|-- assignments           Coursework assignments, homework, and problem set submissions
+|-- tp                    Travaux Pratiques (TP), practical lab exercises, and sessions
+`-- projects              Course project milestones, prototypes, and final codebase
 ```
 
 ### Branch Descriptions
 
 - `main`: The root branch containing the primary course documentation, syllabus index, and merged milestones. Direct pushes to `main` are restricted to administrative and consolidated updates.
 - `lectures`: Contains slide notes, code demonstrations, reading notes, and reference implementations covered during weekly lecture sessions.
-- `assignments`: Designated branch for laboratory practicals (Travaux Pratiques / TP), individual coding tasks, and assignment submissions.
-- `assignment`: Tracking branch aliased to `assignments` to support automated checking scripts and assignment verification.
+- `assignments`: Designated branch for take-home coursework assignments, problem sets, and formal submissions.
+- `tp`: Dedicated branch for hands-on laboratory practicals (Travaux Pratiques / TP) and coding session exercises.
+- `projects`: Tracks course project milestones, mid-term prototypes, team modules, and the final course deliverable.
 
 ---
 
