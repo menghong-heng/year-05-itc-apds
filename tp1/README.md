@@ -47,10 +47,100 @@ The introduction of the lecture focused on the fundamental building blocks of Py
   - Briefly summarize what the function does, its parameters, and its return value.
 - **Control Flow**: Avoid deeply nested `if/else` ladders by using early returns (guard clauses) to exit immediately on invalid input or error conditions.
 
-### PEP 8 Guidelines
-- **Indentation**: Use 4 spaces per indentation level. Avoid using tabs.
-- **Spacing**: Use standard spacing around operators (`a = b + c`) and directly after commas in lists or parameter lists (`func(a, b, c)`).
-- **Blank Lines**: Separate top-level functions and classes with two blank lines, and separate method definitions inside a class with one blank line to keep code visually clean.
+### PEP 8 Guidelines (Style Guide for Python Code)
+
+PEP 8 is the official style guide for writing Python code. Its core philosophy is that code readability is paramount, and consistency across projects allows programmers to understand each other's code effortlessly.
+
+#### 1. Code Layout and Line Length
+- **Indentation**: Use exactly 4 spaces per indentation level. Never use or mix tabs.
+- **Maximum Line Length**: Limit all lines to a maximum of 79 characters (or 88 characters under modern Black/Ruff standards). This allows multiple files to be opened side-by-side in split editors without horizontal scrolling.
+- **Line Breaks Around Operators**: When breaking long mathematical or logical expressions across multiple lines, break **before** the binary operator (Knuth's style), keeping the operator with its operand:
+  ```python
+  total_score = (
+      assignment_score
+      + midterm_score
+      + final_exam_score
+  )
+  ```
+- **Blank Lines Structure**:
+  - Separate top-level classes and functions with **2 blank lines**.
+  - Separate methods inside a class with **1 blank line**.
+  - Use single blank lines inside functions sparingly to separate distinct logical steps.
+
+#### 2. Imports Organization and Grouping
+- **Placement**: All imports must be placed at the very top of the file, immediately after any module-level docstrings, and before module constants.
+- **Separate Lines**: Each import should be on its own line:
+  ```python
+  # Good
+  import os
+  import sys
+
+  # Avoid
+  import os, sys
+  ```
+- **Three-Block Grouping Order**: Imports must be grouped in this exact order, separated by a single blank line:
+  1. **Standard Library Imports** (e.g., `os`, `sys`, `math`, `logging`, `typing`)
+  2. **Related Third-Party Imports** (e.g., `numpy`, `pandas`, `requests`)
+  3. **Local Application / Module Imports** (e.g., `from models import StudentRecord`)
+- **Avoid Wildcard Imports**: Never use `from module import *`. Wildcards pollute the global namespace, hide where functions originate, and confuse linters.
+
+#### 3. Whitespace Rules in Expressions
+- **Binary Operators**: Always surround assignment (`=`), comparisons (`==`, `!=`, `<`, `>`), and arithmetic (`+`, `-`, `*`, `/`) operators with a single space on both sides (`total = count + 1`).
+- **Keyword Arguments / Defaults**: Do **not** use spaces around the `=` sign when defining default parameter values or passing keyword arguments:
+  ```python
+  def connect(host, port=8080, timeout=30):
+      ...
+  ```
+- **Parentheses, Brackets, and Braces**: Do not put spaces immediately inside opening or before closing delimiters:
+  ```python
+  # Good
+  scores = [90, 85, 78]
+  print(scores[0])
+
+  # Avoid
+  scores = [ 90, 85, 78 ]
+  print( scores[ 0 ] )
+  ```
+- **Commas and Colons**: Never put space before a comma or colon; always put a space immediately after (`(x, y)` and `{key: value}`).
+- **Function Calls**: Never put space between the function name and the open parenthesis (`calculate(a, b)` not `calculate (a, b)`).
+
+#### 4. Quotes and String Literals
+- In Python, single quotes `'...'` and double quotes `"..."` work identically. Choose one style and keep it consistent throughout the project.
+- For docstrings, PEP 8 and PEP 257 strictly mandate triple double-quotes: `"""..."""`.
+- When a string contains quotes, use the alternative quote to avoid ugly backslash escaping (e.g., `"It's easy"` instead of `'It\'s easy'`).
+
+#### 5. Pythonic Programming Idioms and Best Practices
+- **Comparing to `None`**: Always compare singletons like `None` using `is` or `is not`, never equality operators:
+  ```python
+  # Good
+  if result is None:
+      ...
+
+  # Bad
+  if result == None:
+      ...
+  ```
+- **Testing for Emptiness**: For Python sequences (lists, tuples, strings, dictionaries), use the fact that empty sequences are inherently falsy:
+  ```python
+  # Good
+  if not student_records:
+      ...
+
+  # Bad
+  if len(student_records) == 0:
+      ...
+  ```
+- **Boolean Comparisons**: Never compare boolean variables to `True` or `False` using `==`:
+  ```python
+  # Good
+  if is_passed:
+      ...
+
+  # Bad
+  if is_passed == True:
+      ...
+  ```
+- **Exception Catching**: Always catch specific exceptions (`except (ValueError, KeyError):`), and avoid bare `except:` clauses which accidentally catch `SystemExit` and `KeyboardInterrupt`.
 
 ### Debugging Techniques
 - **Checking Errors and Reading Tracebacks**:
