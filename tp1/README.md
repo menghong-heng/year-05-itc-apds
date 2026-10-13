@@ -15,7 +15,6 @@ Based on the classroom lecture slides:
 1. **Introduction**
 2. **Clean Code, PEP 8, and Debugging**
 3. **Tips and Tricks to Help Ensure Your Code Follows PEP 8**
-4. **Reference**
 
 ---
 
@@ -146,6 +145,10 @@ PEP 8 is the official style guide for writing Python code. Its core philosophy i
 - **Checking Errors and Reading Tracebacks**:
   - When Python throws an error, the traceback shows the call stack, the exact line number where the failure happened, and the error type (`TypeError`, `ValueError`, `KeyError`, `IndexError`).
   - Reading the bottom line of the traceback first gives the immediate error reason.
+- **Running Individual Isolated Functions to Find Errors**:
+  - When an error or unexpected result occurs in a larger program, do not try to run and debug the entire application at once.
+  - Break down the process by running individual, isolated functions independently with small, sample test inputs (e.g., inside an interactive terminal, REPL, or a dedicated scratch block).
+  - Isolating each function verifies its inputs, internal logic, and return values independently, pinpointing exactly which function introduced the bug without interference or side effects from the rest of the application.
 - **Logging vs. Print**:
   - Relying on `print()` statements for debugging can clutter code and output.
   - Using Python's built-in `logging` module allows tracking events with severity levels (`DEBUG`, `INFO`, `WARNING`, `ERROR`) and can be easily turned on or off without deleting code lines.
@@ -199,14 +202,3 @@ Manually checking indentation, whitespace, and capitalization across multiple fi
 ### 3.5 Editor Integration
 - Use code editors like VS Code with the Ruff extension.
 - Enable **Format on Save** so your code is automatically formatted according to PEP 8 every time you save a file.
-
----
-
-## 4) Reference
-
-- **Dustin Boswell & Trevor Foucher (2011)**: *The Art of Readable Code*, O'Reilly Media.
-- **PEP 8**: *Style Guide for Python Code* ([peps.python.org/pep-0008](https://peps.python.org/pep-0008/)).
-- **PEP 257**: *Docstring Conventions* ([peps.python.org/pep-0257](https://peps.python.org/pep-0257/)).
-- **Python Official Documentation**: [docs.python.org](https://docs.python.org/)
-- **Ruff Documentation**: [docs.astral.sh/ruff](https://docs.astral.sh/ruff/)
-- **Course Slides**: Department of Applied Mathematics and Statistics, ITC (Lecturer: Mr. VANN Visal).
