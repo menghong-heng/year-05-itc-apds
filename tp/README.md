@@ -66,8 +66,28 @@ The introduction of the lecture focused on the fundamental building blocks of Py
 
 ## 3) Tips and Tricks to Help Ensure Your Code Follows PEP 8
 
-### Autoformatting with Ruff
-Manually fixing formatting, indentation, and spacing errors across multiple files is tedious. The lecture introduced **Ruff** as a modern, fast tool for Python code formatting:
+### 3.1 Indentation Style
+- **4 Spaces per Level**: Always use exactly 4 spaces per indentation level. Never use tabs.
+- **Never Mix Tabs and Spaces**: Python 3 disallows mixing tabs and spaces for indentation; using spaces uniformly prevents unexpected `IndentationError` bugs across different operating systems.
+- **Continuation Lines**: When wrapping long lines across multiple lines, align wrapped arguments with the opening delimiter or use a hanging indent with an extra 4 spaces.
+
+### 3.2 Spacing and Whitespace Rules
+- **Spaces Around Operators**: Surround binary operators (`=`, `+=`, `==`, `<`, `>`, `+`, `-`, `*`, `/`) with a single space on each side (`x = a + b`).
+- **No Extraneous Spaces**: Avoid putting spaces immediately inside parentheses, brackets, or braces (write `spam(ham[1], {eggs: 2})`, not `spam( ham[ 1 ], { eggs: 2 } )`).
+- **Commas and Colons**: Do not place a space before a comma or colon; always place one space after (`[1, 2, 3]` and `{key: value}`).
+- **Blank Lines Rhythm**:
+  - Use **2 blank lines** to surround top-level function and class definitions.
+  - Use **1 blank line** between method definitions inside a class.
+  - Use blank lines sparingly inside functions to separate logical paragraphs or phases of computation.
+
+### 3.3 Capitalization Rules
+- **Classes**: Use **Capitalized Words** (`PascalCase` / `CapWords`), where every word starts with a capital letter (e.g., `StudentRecord`, `DataAnalyzer`).
+- **Constants**: Use all **Capital Letters** (`UPPER_SNAKE_CASE`) with underscores for values that remain constant (e.g., `MAX_RETRIES`, `DEFAULT_TIMEOUT`, `PI`).
+- **Comments**: Always start a block comment or inline comment with a **Capital letter** and format it as a complete sentence (`# Filter out invalid records before computing GPA.`).
+- **Docstrings**: Capitalize the first letter of the docstring summary line and conclude it with a period (`"""Calculate the average GPA across all student records."""`).
+
+### 3.4 Automating PEP 8 with Ruff
+Manually checking indentation, whitespace, and capitalization across multiple files is tedious. The lecture introduced **Ruff** as a fast tool to enforce and autoformat these rules:
 
 1. **Install Ruff**:
    ```bash
@@ -78,15 +98,15 @@ Manually fixing formatting, indentation, and spacing errors across multiple file
    ```bash
    ruff format .
    ```
-   This automatically cleans up indentation, spacing, quotes, and line wrapping across all Python files in the directory to match PEP 8.
+   This automatically fixes indentation, spacing, quotes, and line breaks across all Python files in the directory to match PEP 8.
 
 3. **Check and Fix Style Issues**:
    ```bash
    ruff check --fix .
    ```
-   This quickly detects common style issues (like unused imports or misplaced statements) and automatically fixes them where possible.
+   Detects common style issues (like unused imports or wrong spacing) and automatically fixes them.
 
-### Editor Integration
+### 3.5 Editor Integration
 - Use code editors like VS Code with the Ruff extension.
 - Enable **Format on Save** so your code is automatically formatted according to PEP 8 every time you save a file.
 
