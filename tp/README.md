@@ -9,7 +9,7 @@ This branch (`tp`) contains laboratory practical session materials and lecture s
 | Session | Title | Directory | Status |
 | :--- | :--- | :--- | :--- |
 | **TP 01** | Clean Code, PEP 8, and Debugging (Lecture Slides Summary) | [`tp1/`](../tp1/README.md) | Completed |
-| **TP 02** | Python Practical Notebooks and CSV Samples | [`tp2/`](../tp2/) | Uploaded |
+| **TP 02** | OOP and Design Patterns — Combined Notebook | [`TP2.ipynb`](../tp2/TP2.ipynb) | Uploaded |
 | **TP 03** | Upcoming Practical Session | `tp3/` | Pending |
 | **TP 04** | Upcoming Practical Session | `tp4/` | Pending |
 
