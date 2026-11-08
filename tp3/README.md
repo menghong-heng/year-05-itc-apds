@@ -1,32 +1,37 @@
-# APDS TP03 — Gemma 3 fine-tuning
+# TP03 — Gemma 3 fine-tuning
 
-Local Khmer question-answering experiments using Gemma 3 4B, 4-bit loading, and LoRA adapters.
+[Notebook](APDS_TP03_Gemma3_Final.ipynb) · [Report](TP03_Report.md) · [Setup](docs/SETUP.md)
 
-## Submission
+Khmer question-answering experiments with Gemma 3 4B, 4-bit loading, and LoRA. The executed notebook shows the alternative context-QA run; the report compares all four completed experiments.
 
-- [Executed notebook](APDS_TP03_Gemma3_Final.ipynb): configuration, training, loss curves, and before/after predictions. The saved execution uses the alternative Khmer QA dataset.
-- [Experiment report](TP03_Report.md): workflow, hyperparameters, data preparation, loss analysis, measured comparisons, and limitations.
-- [Local setup with uv](README_local_uv.md): installation, experiment presets, and reproduction instructions.
-- `outputs/`: recorded metrics, raw predictions, saved splits, cleaning manifests, plots, and available executed notebooks for the four reported experiments.
-- `data_prepared/`: frozen datasets and preparation audits; cleaning code is in the Python helper scripts.
+```text
+tp3/
+├── APDS_TP03_Gemma3_Final.ipynb
+├── TP03_Report.md
+├── README.md
+├── pyproject.toml
+├── uv.lock
+├── data/       # Source CSVs, frozen prepared splits, audits and attribution
+├── scripts/    # Data preparation and prediction display helpers
+├── results/    # Metrics, predictions and loss plots for four completed runs
+└── docs/       # Setup, report figures and preserved course notes
+```
 
-The alternative QA run improved chrF from 20.50 to 32.14 on 31 held-out examples. Banking outputs remain unreliable; see the report for the unsuccessful experiments and remaining errors. Context-supplied QA and closed-book banking scores are not directly comparable.
+## Run
 
-## Running
+From this `tp3` folder:
 
 ```bash
 uv sync --python 3.11
 uv run jupyter lab
 ```
 
-Open the notebook and select the project environment. A compatible NVIDIA CUDA GPU is required. Restart the kernel before changing experiments. Training saves new run folders without replacing the recorded results.
+Select the project kernel. A compatible NVIDIA CUDA GPU is required. Restart the kernel before changing experiments. New runs save to the ignored `outputs/` folder. Archived results preserve the original run metadata; only file organization and imports have changed since the saved execution.
 
-## Data attribution
+The alternative QA run improved chrF from 20.50 to 32.14 on 31 examples. Banking answers still contain factual errors. Scores across context QA and closed-book banking are not directly comparable.
 
-The supplied banking CSV is preserved as received. The alternative dataset derives from sengtha / iAny E-KHMER Technology and Wikipedia contributors, under CC BY-SA 4.0. Preserve the [attribution and license information](data_sources/khmerqa/ATTRIBUTION.md) and source provenance when redistributing the data. No general license grant for the supplied banking data is asserted here.
+## Data
 
-Local environments, model caches, checkpoints, and adapters are excluded from this submission package.
+The supplied banking CSV is preserved unchanged in `data/raw/`. Alternative data derives from sengtha / iAny E-KHMER Technology and Wikipedia contributors under CC BY-SA 4.0. Keep the [attribution](data/sources/khmerqa/ATTRIBUTION.md) and provenance when redistributing it. No general license grant for the supplied banking data is asserted.
 
-## Course notes
-
-The pre-existing [TP03 course notes](COURSE_NOTES.md) are preserved separately from the experiment submission.
+The [course notes](docs/COURSE_NOTES.md) are preserved separately. Model weights, checkpoints, environments and caches are excluded.

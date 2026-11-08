@@ -20,3 +20,6 @@ outputs/**/adapter/
 .env
 .env.*
 !.env.example
+
+# New local runs; curated completed results live in results/
+outputs/

@@ -44,7 +44,7 @@ Epochs determine when training ends. Optimizer steps provide the monitoring axis
 
 ## Results
 
-chrF measures character n-gram overlap with the reference on a 0–100 scale. It is useful for Khmer surface-form comparison but does not verify facts. Scores use the shared text-normalization function from `prepare_data.py`. Exact match is a secondary, strict reference-reproduction check: a correct paraphrase can fail it, and zero exact matches does not mean every answer is wholly wrong.
+chrF measures character n-gram overlap with the reference on a 0–100 scale. It is useful for Khmer surface-form comparison but does not verify facts. Scores use the shared text-normalization function from `scripts/prepare_data.py`. Exact match is a secondary, strict reference-reproduction check: a correct paraphrase can fail it, and zero exact matches does not mean every answer is wholly wrong.
 
 | Experiment | Test examples | Before chrF | After chrF | Change | Exact matches before → after |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -64,7 +64,7 @@ The script check flags alphabetic characters outside Khmer and Latin. It cannot 
 
 ## Loss analysis
 
-![Training and validation loss by optimizer step](report_assets/loss_comparison.png)
+![Training and validation loss by optimizer step](docs/assets/loss_comparison.png)
 
 | Experiment | Final step | Selected step | Lowest validation loss | Training minutes | Peak reserved GPU GB |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -93,15 +93,15 @@ The experiments show that data scope, knowledge coverage, output style, and fact
 
 ## Reproduction and artifacts
 
-Use the setup in [README_local_uv.md](README_local_uv.md). Select a preset in `APDS_TP03_Gemma3_Final.ipynb`, restart its kernel, and run all cells. Each run saves its settings, data/split hashes, environment versions, raw predictions, loss curve, checkpoint and adapter under `outputs/`. The notebook contains execution results; this separate report contains the interpretation.
+Use the setup in [local setup guide](docs/SETUP.md). Select a preset in `APDS_TP03_Gemma3_Final.ipynb`, restart its kernel, and run all cells. Each run saves its settings, data/split hashes, environment versions, raw predictions, loss curve, checkpoint and adapter under `outputs/`. The notebook contains execution results; this separate report contains the interpretation.
 
-Completed runs used here:
+Completed runs archived under `results/` (metrics, predictions, and loss plots):
 
 - `acleda_2epochs-20261108T085958354107Z`
 - `acleda_4epochs-20261108T092541199378Z`
 - `banking_v2_2epochs-20261108T102848848703Z`
 - `khmerqa_2epochs-20261108T104917074166Z`
 
-The [summary CSV](report_assets/experiment_summary.csv) preserves unrounded comparison values. Older 60-step runs used different generation settings and are excluded from this table. The original source and previous run folders remain unchanged.
+The archived results retain their original run-time metadata and paths. The [summary CSV](docs/assets/experiment_summary.csv) preserves unrounded comparison values. Older 60-step runs used different generation settings and are excluded from this table. The original source and previous run folders remain unchanged.
 
-Alternative data attribution: sengtha / iAny E-KHMER Technology and Wikipedia contributors; source revision `3ca26dc817cae20dc4c574e7027b581ec7cb73ae`. Dataset derivatives are distributed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Preserve `data_sources/khmerqa/ATTRIBUTION.md`, upstream documentation and provenance when publishing the data. These dataset terms are not a statement about the model adapter's license.
+Alternative data attribution: sengtha / iAny E-KHMER Technology and Wikipedia contributors; source revision `3ca26dc817cae20dc4c574e7027b581ec7cb73ae`. Dataset derivatives are distributed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Preserve `data/sources/khmerqa/ATTRIBUTION.md`, upstream documentation and provenance when publishing the data. These dataset terms are not a statement about the model adapter's license.

@@ -11,7 +11,7 @@ import urllib.request
 import unicodedata
 
 from transformers import AutoTokenizer
-from prepare_data import CONTROL_TOKEN, clean_text, group_key, prepare
+from .prepare_data import CONTROL_TOKEN, clean_text, group_key, prepare
 
 REPOSITORY = "sengtha/khmer-qa"
 REVISION = "3ca26dc817cae20dc4c574e7027b581ec7cb73ae"
@@ -22,9 +22,10 @@ SAMPLE_SIZE = 303
 
 def build(project, tokenizer_directory, raw_file=None):
     project = Path(project)
-    csv_path = project / "khmer_wikipedia_qa.csv"
-    prepared_path = project / "data_prepared" / "khmerqa"
-    source_directory = project / "data_sources" / "khmerqa"
+    (project / "data" / "raw").mkdir(parents=True, exist_ok=True)
+    csv_path = project / "data" / "raw" / "khmer_wikipedia_qa.csv"
+    prepared_path = project / "data" / "prepared" / "khmerqa"
+    source_directory = project / "data" / "sources" / "khmerqa"
     if csv_path.exists() or prepared_path.exists():
         raise FileExistsError("Alternative dataset already exists. Use a new project directory to rebuild.")
     source_directory.mkdir(parents=True, exist_ok=True)

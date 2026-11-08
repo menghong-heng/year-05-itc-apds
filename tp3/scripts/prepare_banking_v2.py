@@ -8,7 +8,7 @@ from pathlib import Path
 import re
 import unicodedata
 
-from prepare_data import (
+from .prepare_data import (
     CONTROL_TOKEN,
     DATE_OR_OFFER,
     FEE_WAIVER,
