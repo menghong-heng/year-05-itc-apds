@@ -1,0 +1,8 @@
+# Preserve prepared-data hashes across checkouts.
+*.csv -text
+*.json -text
+*.ipynb -text
+*.py text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.lock text eol=lf
