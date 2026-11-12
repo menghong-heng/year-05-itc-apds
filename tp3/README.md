@@ -1,6 +1,6 @@
 # TP03 · Gemma 3 fine-tuning
 
-[Open in Colab](https://colab.research.google.com/github/menghong-heng/year-05-itc-apds/blob/tp/tp3/APDS_TP03_Gemma3_Colab.ipynb)
+[View the executed notebook](APDS_TP03_Gemma3_Colab.ipynb) · [Open in Colab](https://colab.research.google.com/github/menghong-heng/year-05-itc-apds/blob/tp/tp3/APDS_TP03_Gemma3_Colab.ipynb)
 
 The Colab notebook fine-tunes Gemma 3 4B separately on the supplied Khmer banking questions and on a Khmer Wikipedia QA subset. Both runs start from the same 4-bit checkpoint and use 60 optimizer steps, LoRA rank 8, and a learning rate of `2e-4`. The notebook compares held-out answers from the base model and each adapter.
 
@@ -19,14 +19,16 @@ Try `តើដូចម្តេចដែលហៅថា ឥណទានរថ�
 
 After a Colab reset, select a GPU, run the installation cell in Section 1, then run Section 9. Upload your saved `TP03_Gemma3_results.zip` when prompted.
 
-## Colab results
+## Latest Colab results
+
+The executed notebook shows the comparison table and loss curves in Section 7 and three sample answers in Section 9.
 
 | Dataset | Test examples | chrF before | chrF after | Change | Exact matches before → after |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Original banking | 32 | 20.78 | 19.50 | −1.29 | 0 → 0 |
-| Khmer Wikipedia QA | 31 | 18.90 | 32.73 | +13.83 | 0 → 8 |
+| Original banking | 32 | 20.78 | 19.08 | −1.71 | 0 → 0 |
+| Khmer Wikipedia QA | 31 | 18.90 | 32.88 | +13.99 | 0 → 8 |
 
-Banking validation loss fell throughout training. Wikipedia QA reached its lowest validation loss at step 50. The Wikipedia prompts include a passage, so the before-to-after change within each dataset is the clearest comparison.
+Banking validation loss fell to 1.450 at step 60. Wikipedia QA reached its lowest validation loss of 0.257 at step 50. The Wikipedia prompts include a passage, so the before-to-after change within each dataset is the clearest comparison.
 
 The supplied banking CSV is preserved in `data/raw/` alongside the frozen splits under `data/prepared/`. The Wikipedia subset credits sengtha / iAny and Khmer Wikipedia contributors under CC BY-SA 4.0. See the [dataset attribution and provenance](data/sources/khmerqa/ATTRIBUTION.md).
 
