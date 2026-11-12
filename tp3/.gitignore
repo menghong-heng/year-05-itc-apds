@@ -23,3 +23,6 @@ outputs/**/adapter/
 
 # New local runs; curated completed results live in results/
 outputs/
+
+wandb/
+.previous-layout/

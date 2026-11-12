@@ -1,12 +1,13 @@
 # TP03 — Gemma 3 fine-tuning
 
-[Notebook](APDS_TP03_Gemma3_Final.ipynb) · [Report](TP03_Report.md) · [Setup](docs/SETUP.md)
+[Local notebook](APDS_TP03_Gemma3_Final.ipynb) · [Open in Colab](https://colab.research.google.com/github/menghong-heng/year-05-itc-apds/blob/tp-03-colab/tp3/APDS_TP03_Gemma3_Colab.ipynb) · [Report](TP03_Report.md) · [Setup](docs/SETUP.md)
 
-Khmer question-answering experiments with Gemma 3 4B, 4-bit loading, and LoRA. The executed notebook shows the alternative context-QA run; the report compares all four completed experiments.
+Khmer question-answering experiments with Gemma 3 4B, 4-bit loading, and LoRA. Both notebooks default to the alternative context-QA experiment. The report and archived results compare the four completed local runs.
 
 ```text
 tp3/
 ├── APDS_TP03_Gemma3_Final.ipynb
+├── APDS_TP03_Gemma3_Colab.ipynb
 ├── TP03_Report.md
 ├── README.md
 ├── pyproject.toml
@@ -26,7 +27,9 @@ uv sync --python 3.11
 uv run jupyter lab
 ```
 
-Select the project kernel. A compatible NVIDIA CUDA GPU is required. Restart the kernel before changing experiments. New runs save to the ignored `outputs/` folder. Archived results preserve the original run metadata; only file organization and imports have changed since the saved execution.
+Select the project kernel. A compatible NVIDIA CUDA GPU is required. Restart the kernel before changing experiments. New runs save to the ignored `outputs/` folder. Archived results preserve the original run metadata. Both notebooks call the same helpers in `scripts/training.py`.
+
+For Colab, select a GPU runtime (L4 recommended) and add `WANDB_API_KEY` in Colab Secrets with notebook access enabled. W&B tracks loss and aggregate evaluation metrics. See [setup](docs/SETUP.md) for local W&B and the Colab download step.
 
 The alternative QA run improved chrF from 20.50 to 32.14 on 31 examples. Banking answers still contain factual errors. Scores across context QA and closed-book banking are not directly comparable.
 

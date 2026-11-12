@@ -93,7 +93,7 @@ The experiments show that data scope, knowledge coverage, output style, and fact
 
 ## Reproduction and artifacts
 
-Use the setup in [local setup guide](docs/SETUP.md). Select a preset in `APDS_TP03_Gemma3_Final.ipynb`, restart its kernel, and run all cells. Each run saves its settings, data/split hashes, environment versions, raw predictions, loss curve, checkpoint and adapter under `outputs/`. The notebook contains execution results; this separate report contains the interpretation.
+Use the setup in [local setup guide](docs/SETUP.md). Select a preset in `APDS_TP03_Gemma3_Final.ipynb`, restart its kernel, and run all cells. Each run saves its settings, data/split hashes, environment versions, raw predictions, loss curve, checkpoint and adapter under `outputs/`. The report and archived results preserve the completed local experiments; the current local and Colab notebooks share the refactored training workflow.
 
 Completed runs archived under `results/` (metrics, predictions, and loss plots):
 

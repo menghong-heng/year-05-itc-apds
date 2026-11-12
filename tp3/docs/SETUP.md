@@ -16,7 +16,7 @@ Set `EXPERIMENT` in the configuration cell:
 
 | Preset | Data preparation | Epochs | Learning rate |
 | --- | --- | ---: | ---: |
-| `khmerqa_2epochs` | Alternative context QA; saved notebook execution | 2 | 0.0002 |
+| `khmerqa_2epochs` | Alternative context QA; default experiment | 2 | 0.0002 |
 | `banking_v2_2epochs` | Revised institution-scoped banking | 2 | 0.0002 |
 | `banking_v2_4epochs` | Revised banking; optional, not a reported run | 4 | 0.0002 |
 | `acleda_2epochs` | Original banking preparation | 2 | 0.0002 |
@@ -38,3 +38,15 @@ uv run python -m scripts.build_alternative_dataset /path/to/new-folder /path/to/
 ```
 
 The local tokenizer must be the Gemma tokenizer. The builder writes `data/raw/`, `data/prepared/khmerqa/` and `data/sources/khmerqa/` in the new destination. Omitting `--raw-file` downloads the pinned source. Keep its attribution and provenance with dataset derivatives.
+
+## Colab
+
+[Open the Colab notebook](https://colab.research.google.com/github/menghong-heng/year-05-itc-apds/blob/tp-03-colab/tp3/APDS_TP03_Gemma3_Colab.ipynb) and select a GPU runtime (L4 recommended). The setup cells install dependencies and clone the project branch, which includes the prepared datasets. Run the cells in order. Download the results ZIP before disconnecting; it contains metrics, predictions, the plot and the adapter.
+
+## Weights & Biases
+
+Colab uses the `apds-tp03` project by default. Add `WANDB_API_KEY` in Colab Secrets and grant notebook access. Set `WANDB_PROJECT = None` to run without tracking.
+
+Local tracking is optional. After `uv sync`, run `uv pip install wandb`, then `uv run --no-sync wandb login` and `uv run --no-sync jupyter lab`. Set `WANDB_PROJECT = "apds-tp03"` in the local notebook. A later exact sync removes the extra W&B package.
+
+W&B receives training loss, validation loss, training settings and aggregate held-out scores. Prediction text and the adapter are saved in the run folder. Model upload, code saving and gradient watching are disabled.
