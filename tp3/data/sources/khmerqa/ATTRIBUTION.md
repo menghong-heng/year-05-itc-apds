@@ -16,4 +16,4 @@ License: **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4
 
 Changes: deterministic subset of 303 extractive examples; normalized Unicode and whitespace; removed invalid/control-token text, duplicates, repeated contexts/questions/answers, examples whose answer is absent from context, and examples exceeding 2048 formatted Gemma tokens. Context and question are combined into the input column. Prepared CSV, splits, and derived dataset content remain under CC BY-SA 4.0. Keep this attribution with redistributed dataset files. No endorsement is implied.
 
-The raw source is saved as data.json. provenance.json records the URL, revision, source hash, selected row numbers and token counts. build_alternative_dataset.py reproduces the transformation.
+[`provenance.json`](provenance.json) records the source URL, revision, hash, selected row numbers and token counts. The source snapshot and preparation script are available in the [earlier TP03 revision](https://github.com/menghong-heng/year-05-itc-apds/tree/fde005f8da3178b80d27e9ebadc763364cf166a4/tp3).

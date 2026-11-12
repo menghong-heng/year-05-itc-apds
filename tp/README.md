@@ -10,7 +10,7 @@ This branch (`tp`) contains laboratory practical session materials and lecture s
 | :--- | :--- | :--- | :--- |
 | **TP 01** | Clean Code, PEP 8, and Debugging (Lecture Slides Summary) | [`tp1/`](../tp1/README.md) | Completed |
 | **TP 02** | OOP and Design Patterns — Combined Notebook | [`TP2.ipynb`](../tp2/TP2.ipynb) | Uploaded |
-| **TP 03** | Unsloth, LoRA, and Fine-tuning — Lecture Notes | [`tp3/`](../tp3/README.md) | Uploaded |
+| **TP 03** | Gemma 3 fine-tuning and Khmer question answering | [`tp3/`](../tp3/README.md) | Uploaded |
 | **TP 04** | Upcoming Practical Session | `tp4/` | Pending |
 
 ---
@@ -25,6 +25,6 @@ The full text summary of the TP 01 classroom slides covering:
 
 is available in **[tp1/README.md](../tp1/README.md)**.
 
-## Accessing TP 03 Notes
+## Accessing TP 03
 
-The October 27, 2026 notes cover Unsloth, installation requirements, Llama 3 chat templates, LoRA configuration, and fine-tuning versus RAG. The full notes are available in **[tp3/README.md](../tp3/README.md)**.
+The [TP03 README](../tp3/README.md) links to the current Colab notebook and summarizes the comparison results. The [October 27 course notes](https://github.com/menghong-heng/year-05-itc-apds/blob/fde005f8da3178b80d27e9ebadc763364cf166a4/tp3/docs/COURSE_NOTES.md) remain available in Git history.
