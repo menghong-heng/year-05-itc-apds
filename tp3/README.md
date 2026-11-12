@@ -9,6 +9,8 @@ Gemma 3 4B was fine-tuned separately on the original Khmer banking dataset and a
 | Original banking | 32 | 20.78 | 19.08 | −1.71 | 0 → 0 |
 | Khmer Wikipedia QA | 31 | 18.90 | 32.88 | +13.99 | 0 → 8 |
 
+![Held-out chrF before and after fine-tuning. Original banking fell from 20.78 to 19.08, and Khmer Wikipedia QA rose from 18.90 to 32.88.](assets/chrf_comparison.png)
+
 **Original banking.** Validation loss fell from 2.034 at step 10 to 1.450 at step 60. On the test set, chrF fell by 1.71 points and exact matches stayed at zero. Answers hit the generation limit 8 times before fine-tuning and zero times afterward. Lower validation loss and fewer truncations coincided with lower reference overlap on held-out questions.
 
 **Khmer Wikipedia QA.** Fine-tuning improved chrF by 13.99 points and matched 8 of 31 references exactly. Validation loss reached its minimum of 0.257 at step 50, then rose slightly to 0.260 at step 60. The evaluation used the step-50 checkpoint, selected by validation loss.
