@@ -1,35 +1,21 @@
-# TP03 · Gemma 3 fine-tuning
+# TP03 · Gemma 3 fine-tuning results
 
-[View the executed notebook](APDS_TP03_Gemma3_Colab.ipynb) · [Open in Colab](https://colab.research.google.com/github/menghong-heng/year-05-itc-apds/blob/tp/tp3/APDS_TP03_Gemma3_Colab.ipynb)
+Gemma 3 4B was fine-tuned separately on the original Khmer banking dataset and a Khmer Wikipedia QA subset. Both runs started from the same checkpoint and used 60 optimizer steps with identical LoRA settings. The base and fine-tuned models answered the same held-out questions within each dataset.
 
-The Colab notebook fine-tunes Gemma 3 4B separately on the supplied Khmer banking questions and on a Khmer Wikipedia QA subset. Both runs start from the same 4-bit checkpoint and use 60 optimizer steps, LoRA rank 8, and a learning rate of `2e-4`. The notebook compares held-out answers from the base model and each adapter.
-
-## Run in Colab
-
-1. Open the notebook and choose **Runtime → Change runtime type → GPU**.
-2. Add your W&B API key to Colab **Secrets** as `WANDB_API_KEY` and enable **Notebook access**. Run Section 1.
-3. In Section 2, upload `TP03_datasets.zip` from your local TP03 `data` folder. It contains the original banking CSV and the prepared splits for both datasets.
-4. Run through Section 8 and keep `TP03_Gemma3_results.zip`. It contains both adapters, test predictions, the comparison table, and the loss plot. Section 6 prints the two W&B run links.
-
-## Ask Gemma 3
-
-Run Section 9, type a question in the prompt, and press Enter. The banking adapter answers questions without a source passage. Press Enter on a blank line when you’re done.
-
-Try `តើដូចម្តេចដែលហៅថា ឥណទានរថយន្ត?` or `តើធ្វើដូចម្តេចទើបអាចចុះឈ្មោះប្រើប្រាស់សេវាអេស៊ីលីដាអ៊ីនធើណែតបាន?`
-
-After a Colab reset, select a GPU, run the installation cell in Section 1, then run Section 9. Upload your saved `TP03_Gemma3_results.zip` when prompted.
-
-## Latest Colab results
-
-The executed notebook shows the comparison table and loss curves in Section 7 and three sample answers in Section 9.
+## Results
 
 | Dataset | Test examples | chrF before | chrF after | Change | Exact matches before → after |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Original banking | 32 | 20.78 | 19.08 | −1.71 | 0 → 0 |
 | Khmer Wikipedia QA | 31 | 18.90 | 32.88 | +13.99 | 0 → 8 |
 
-Banking validation loss fell to 1.450 at step 60. Wikipedia QA reached its lowest validation loss of 0.257 at step 50. The Wikipedia prompts include a passage, so the before-to-after change within each dataset is the clearest comparison.
+**Original banking.** Validation loss fell from 2.034 at step 10 to 1.450 at step 60. On the test set, chrF fell by 1.71 points and exact matches stayed at zero. Answers hit the generation limit 8 times before fine-tuning and zero times afterward. Lower validation loss and fewer truncations coincided with lower reference overlap on held-out questions.
 
-The supplied banking CSV is preserved in `data/raw/` alongside the frozen splits under `data/prepared/`. The Wikipedia subset credits sengtha / iAny and Khmer Wikipedia contributors under CC BY-SA 4.0. See the [dataset attribution and provenance](data/sources/khmerqa/ATTRIBUTION.md).
+**Khmer Wikipedia QA.** Fine-tuning improved chrF by 13.99 points and matched 8 of 31 references exactly. Validation loss reached its minimum of 0.257 at step 50, then rose slightly to 0.260 at step 60. The evaluation used the step-50 checkpoint, selected by validation loss.
 
-The notebook follows Dustin Boswell and Trevor Foucher’s *The Art of Readable Code*, particularly its guidance on descriptive names, extracting subproblems, and doing one task at a time.
+## Limitations
+
+- **Different tasks.** Banking questions ask the model to recall information without a passage. Wikipedia questions provide the source passage. The before-to-after change within each dataset is more informative than comparing the two final scores.
+- **Small test sets.** The test sets contain 32 and 31 examples. This comparison reports one run per dataset with one seed and one set of hyperparameters, so it gives a limited view of how consistently the results would repeat.
+- **Text overlap.** chrF measures character n-gram overlap and exact match requires the same normalized wording. Both can underrate correct paraphrases. Factual accuracy requires checking the answers against their sources.
+- **Reference quality.** The Wikipedia QA pairs were generated from source passages. The banking references have incomplete provenance and may contain outdated details.
