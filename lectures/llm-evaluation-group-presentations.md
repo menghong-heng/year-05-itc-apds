@@ -95,18 +95,3 @@ Choose metrics based on the expected output and the errors that matter. For exam
 | OCR | CER + WER | Character fidelity and whether whole words survive |
 
 Keep the test set, reference answers, preprocessing, and scoring settings consistent when comparing systems. Use human or task-specific checks when factual correctness matters, since overlap and embedding similarity can remain high when a claim changes.
-
-## Slides
-
-Source decks from the APDS Group Presentations folder, in group order.
-
-1. `Exact_Match_EM_Evaluation_for_Large_Language_Models_no_gamma.pptx`
-2. `2026.11.13 - ADV Group 2 Presentation (1).pdf`
-3. `Precision_Recall_F1_Research_Presentation.pptx (1).pdf`
-4. `Group_4_BLEU_Score_10_Slides (1).pptx`
-5. `ROUGE SCORE Group5.pdf` and `ROUGE_Score_Group5_final.pdf`
-6. `Group 6 METEOR Score (2).pdf`
-7. `BERTScore - Group 07.pptx`
-8. `Group8_Word_Error_Rate_WER_13_Slides.pdf`
-9. `Group9-CER (2).pdf`
-10. `Group10_Comparative_LLM_Evaluation (2).pdf`
